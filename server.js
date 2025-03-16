@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './routes/routes.js'; // Обратите внимание на расширение .js
+import routes from './routes/routes.js'; 
 import dotenv from 'dotenv';
 
 dotenv.config();
