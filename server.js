@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './routes/router.js'; // Путь должен включать .js
+import routes from './routes/router.js'; 
 import dotenv from 'dotenv';
 import path from 'path';
 
