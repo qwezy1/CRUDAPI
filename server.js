@@ -1,27 +1,21 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import routes from './routes/routes.js'; // Обратите внимание на расширение .js
 import dotenv from 'dotenv';
+import router from './routes/router.js';
+import { PrismaClient } from '@prisma/client';
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const prisma = new PrismaClient();
 
-// Подключение к MongoDB
-const mongoURI = process.env.DATABASE;
-
-mongoose.connect(mongoURI)
-  .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch((err) => console.log('MongoDB connection error:', err));
-
-// Для работы с JSON
-app.use(bodyParser.json());
-
-// Маршруты
-app.use(routes);
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.use(express.json());
+app.use((req, res, next) => {
+  req.prisma = prisma;
+  next();
 });
+
+
+app.use(router);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
