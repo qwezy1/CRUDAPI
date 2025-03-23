@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './routes/router.js'; // Путь должен включать .js
+import routes from './routes/router.js'; // Путь должен включать .js -- гпт.
 import dotenv from 'dotenv';
 import path from 'path';
 
@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 5000; // Убедись, что порт 5000
 const mongoURI = process.env.DATABASE;
 mongoose.connect(mongoURI)
     .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch((err) => console.log('MongoDB connection error:', err));
+    .catch((err) => console.log('MongoDB connection error:', err)); // спасибо гпт, что подсказало добавить
 
 // Для работы с JSON
 app.use(bodyParser.json());
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Используем маршруты из router.js
-app.use(routes);
+app.use(routes); // добавь дефолт 'api', это нужно для более удобной тестировки
 
 // Запуск сервера
 app.listen(PORT, () => {

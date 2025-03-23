@@ -5,7 +5,7 @@ const TaskSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
-  },
+  }, // названия не уникальные, у 2х юзеров могут быть одинаковые названия, твоему апи пизда.
   description: {
     type: String,
     required: true
@@ -16,7 +16,7 @@ const TaskSchema = new mongoose.Schema({
     default: 'todo'
   },
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId, // где схема пользователя?
     ref: 'User'
   }
 });
